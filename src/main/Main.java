@@ -11,7 +11,7 @@ import compressor.Node;
 
 /**
  *
- * @author Sakemi
+ * @author Sakemi, Marcelo Arthur
  */
 public class Main {
 
