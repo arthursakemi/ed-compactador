@@ -52,6 +52,8 @@ public class LinkedList {
 
         if (isEmpty()) {
             this.first = temp;
+            this.last = temp;
+            return;
         }
 
         this.last.setNext(temp);
