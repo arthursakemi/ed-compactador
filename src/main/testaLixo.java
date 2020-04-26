@@ -5,14 +5,14 @@
  */
 package main;
 
-import compressor.Compressor;
 import compressor.LinkedList;
-import compressor.Node;
+
 /**
  *
  * @author Marcelo
  */
 public class testaLixo {
+
     public static void main(String[] args) {
         LinkedList lista = new LinkedList();
         lista.addAtEnd("1");
@@ -22,8 +22,9 @@ public class testaLixo {
         lista.addAtEnd("1");
         lista.addAtEnd("13");
         lista.addAtEnd("Mary");
+        lista.removeFrom(0);
         System.out.println(lista);
-        
-        System.out.println(lista.linearSearch("Mary"));
+
+        System.out.println(lista.linearSearch("13"));
     }
 }

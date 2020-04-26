@@ -45,7 +45,7 @@ public class LinkedList {
         }
 
         this.first = temp;
-        this.size++; 
+        this.size++;
     }
 
     public void addAtEnd(String element) {
@@ -58,10 +58,10 @@ public class LinkedList {
             this.last.setNext(temp);
             this.last = last.getNext();
         }
-        
-        this.size++; 
+
+        this.size++;
     }
-    
+
     public int linearSearch(String element) {
         Node temp = first;
         int cont = 0;
@@ -76,11 +76,10 @@ public class LinkedList {
 
         return -1;
     }
-    
+
     public void addAtPosition(String element, int position) {
         Node temp = first;
         Node node = new Node(element, null);
-        int count = 0;
 
         if (isEmpty() || position <= 0) {
             addAtStart(element);
@@ -97,29 +96,37 @@ public class LinkedList {
         node.setNext(temp.getNext());
         temp.setNext(node);
     }
-    
+
     public void removeFrom(int position) {
         int i = 0;
         Node temp = first;
-        
-        while(i < position - 1) {
+
+        if (isEmpty()) {
+            return;
+        }
+
+        if (position == 0) {
+            first = first.getNext();
+        }
+
+        while (i < position - 1) {
             temp = temp.getNext();
             i++;
         }
-        
+
         temp.setNext(temp.getNext().getNext());
     }
-    
+
     @Override
     public String toString() {
         Node temp = this.first;
         String list = "";
-        
-        while(temp != null) {
+
+        while (temp != null) {
             list += temp.getElement();
             temp = temp.getNext();
         }
-        
+
         return list;
     }
 }
