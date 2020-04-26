@@ -41,34 +41,16 @@ public class Compressor {
     }
 
     public static String compressLine(String line) {
-        Pattern words = Pattern.compile("([A-Z]+)", Pattern.CASE_INSENSITIVE);
-        Pattern notWords = Pattern.compile("([^A-Z]+)", Pattern.CASE_INSENSITIVE);
-
+        Pattern words = Pattern.compile("([A-Z]+)|([^A-Z]+)", Pattern.CASE_INSENSITIVE);
         Matcher wordMatcher = words.matcher(line);
-        Matcher specialCharMatcher = notWords.matcher(line);
 
         String compressedLine = "";
-
-        while (wordMatcher.find() && specialCharMatcher.find()) {
-            if (wordMatcher.end() < specialCharMatcher.end()) {
-                System.out.print(wordMatcher.group());
-                System.out.print(specialCharMatcher.group());
-            } else {
-                System.out.print(specialCharMatcher.group());
-                System.out.print(wordMatcher.group());
-            }
-        }
 
         while (wordMatcher.find()) {
             System.out.print(wordMatcher.group());
         }
-
-        while (specialCharMatcher.find()) {
-            System.out.print(specialCharMatcher.group());
-        }
-
         return compressedLine;
-
     }
-
+    
+    
 }

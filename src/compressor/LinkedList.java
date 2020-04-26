@@ -61,4 +61,32 @@ public class LinkedList {
         
         this.size++; 
     }
+    
+    public int linearSearch(String element) {
+        Node temp = first;
+        int cont = 0;
+
+        while (temp != null) {
+            if (temp.getElement() == element) {
+                return cont;
+            }
+            temp = temp.getNext();
+            cont++;
+        }
+
+        return -1;
+    }
+    
+    @Override
+    public String toString() {
+        Node temp = this.first;
+        String list = "";
+        
+        while(temp != null) {
+            list += temp.getElement() + " ";
+            temp = temp.getNext();
+        }
+        
+        return list;
+    }
 }
