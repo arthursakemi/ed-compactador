@@ -16,17 +16,12 @@ import compressor.Node;
 public class Main {
 
     public static void main(String[] args) {
-
         String inputFile = "texto-inicial.txt";
-
         LinkedList texto = Compressor.readInputFile(inputFile);
 
         for (Node n = texto.getFirst(); n != null; n = n.getNext()) {
-
             String compressedLine = Compressor.compressLine(n.getElement());
-
             System.out.println(compressedLine);
-
         }
 
     }

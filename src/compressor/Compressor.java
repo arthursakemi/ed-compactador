@@ -29,7 +29,6 @@ public class Compressor {
             while ((line = bufferedReader.readLine()) != null) {
                 file.addAtEnd(line);
             }
-
             bufferedReader.close();
 
         } catch (FileNotFoundException ex) {
@@ -55,7 +54,6 @@ public class Compressor {
                 System.out.print(wordMatcher.group());
                 System.out.print(specialCharMatcher.group());
             } else {
-
                 System.out.print(specialCharMatcher.group());
                 System.out.print(wordMatcher.group());
             }

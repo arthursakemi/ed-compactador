@@ -44,7 +44,8 @@ public class LinkedList {
             this.last = temp;
         }
 
-        this.first = new Node(element, this.first);
+        this.first = temp;
+        this.size++; 
     }
 
     public void addAtEnd(String element) {
@@ -53,10 +54,11 @@ public class LinkedList {
         if (isEmpty()) {
             this.first = temp;
             this.last = temp;
-            return;
+        } else {
+            this.last.setNext(temp);
+            this.last = last.getNext();
         }
-
-        this.last.setNext(temp);
-        this.last = last.getNext();
+        
+        this.size++; 
     }
 }
