@@ -67,7 +67,7 @@ public class LinkedList {
         int cont = 0;
 
         while (temp != null) {
-            if (temp.getElement() == element) {
+            if (temp.getElement().equals(element)) {
                 return cont;
             }
             temp = temp.getNext();
@@ -77,13 +77,46 @@ public class LinkedList {
         return -1;
     }
     
+    public void addAtPosition(String element, int position) {
+        Node temp = first;
+        Node node = new Node(element, null);
+        int count = 0;
+
+        if (isEmpty() || position <= 0) {
+            addAtStart(element);
+            return;
+        }
+
+        for (int i = 0; i < position - 1; i++) {
+            if (temp.getNext() == null) {
+                temp.setNext(node);
+                return;
+            }
+            temp = temp.getNext();
+        }
+        node.setNext(temp.getNext());
+        temp.setNext(node);
+    }
+    
+    public void removeFrom(int position) {
+        int i = 0;
+        Node temp = first;
+        
+        while(i < position - 1) {
+            temp = temp.getNext();
+            i++;
+        }
+        
+        temp.setNext(temp.getNext().getNext());
+    }
+    
     @Override
     public String toString() {
         Node temp = this.first;
         String list = "";
         
         while(temp != null) {
-            list += temp.getElement() + " ";
+            list += temp.getElement();
             temp = temp.getNext();
         }
         

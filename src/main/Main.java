@@ -17,11 +17,16 @@ public class Main {
 
     public static void main(String[] args) {
         String inputFile = "texto-inicial.txt";
+        
         LinkedList text = Compressor.readInputFile(inputFile);
-
+        LinkedList words = new LinkedList();
+        LinkedList compressedFile = new LinkedList();
+        
         for (Node n = text.getFirst(); n != null; n = n.getNext()) {
-            String compressedLine = Compressor.compressLine(n.getElement());
-            System.out.println(compressedLine);
+            Compressor.compressLine(n.getElement(), words, compressedFile);
+            compressedFile.addAtEnd("\n");
         }
+        
+        System.out.println(compressedFile);
     }
 }

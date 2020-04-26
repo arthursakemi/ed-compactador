@@ -20,7 +20,7 @@ public class Compressor {
 
     public static LinkedList readInputFile(String inputFile) {
         LinkedList file = new LinkedList();
-
+        
         try {
             FileReader fileReader = new FileReader(inputFile);
             BufferedReader bufferedReader = new BufferedReader(fileReader);
@@ -40,17 +40,29 @@ public class Compressor {
         return file;
     }
 
-    public static String compressLine(String line) {
-        Pattern words = Pattern.compile("([A-Z]+)|([^A-Z]+)", Pattern.CASE_INSENSITIVE);
-        Matcher wordMatcher = words.matcher(line);
-
-        String compressedLine = "";
-
+    public static void compressLine(String line, LinkedList words, LinkedList outputFile) {
+        Pattern wordsPattern = Pattern.compile("([A-Z]+)|([^A-Z]+)", Pattern.CASE_INSENSITIVE);
+        Matcher wordMatcher = wordsPattern.matcher(line);
+        
         while (wordMatcher.find()) {
-            System.out.print(wordMatcher.group());
+            String word = wordMatcher.group();
+            if(Character.isLetter(word.charAt(0))){
+                manageWord(word, words, outputFile);
+            } else {
+                outputFile.addAtEnd(word);
+            }
         }
-        return compressedLine;
     }
     
-    
+    public static void manageWord (String word, LinkedList words, LinkedList outputFile) {
+        int i = words.linearSearch(word);
+        
+        if(i >= 0) {
+            words.removeFrom(i);
+            outputFile.addAtEnd(String.valueOf(i + 1));
+        } else {
+            outputFile.addAtEnd(word);
+        }
+        words.addAtStart(word);
+    }
 }
