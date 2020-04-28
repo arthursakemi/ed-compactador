@@ -163,15 +163,4 @@ public class Compressor {
         return reversedLine;
     }
 
-    public static void manageCompressedWord(String word, LinkedList words, LinkedList outputFile) {
-        int i = words.linearSearch(word);
-
-        if (i >= 0) {
-            words.removeFrom(i);
-            outputFile.addAtEnd(String.valueOf(i + 1));
-        } else {
-            outputFile.addAtEnd(word);
-        }
-        words.addAtStart(word);
-    }
 }
