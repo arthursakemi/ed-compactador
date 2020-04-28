@@ -7,8 +7,6 @@ package main;
 
 import compressor.Compressor;
 import compressor.LinkedList;
-import compressor.Node;
-import compressor.Util;
 
 /**
  *
@@ -19,19 +17,14 @@ public class Main {
     public static void main(String[] args) {
         String inputFile = "texto-inicial.txt";
         String compressedFileName = "texto-compactado.txt";
+        String decompressedFileName = "texto-descompactado.txt";
 
-        LinkedList text = Compressor.readInputFile(inputFile);
         LinkedList words = new LinkedList();
-        LinkedList compressedFile = new LinkedList();
 
-        for (Node n = text.getFirst(); n != null; n = n.getNext()) {
-            Compressor.compressLine(n.getElement(), words, compressedFile);
-            compressedFile.addAtEnd("\n");
-        }
+        Compressor.compressFile(inputFile, compressedFileName, words);
 
-        System.out.println(compressedFile);
-
-        Util.writeOutputFile(compressedFileName, compressedFile.toString());
+        Compressor.decompressFile(compressedFileName, decompressedFileName, words);
 
     }
+
 }

@@ -5,6 +5,7 @@
  */
 package main;
 
+import compressor.Compressor;
 import compressor.LinkedList;
 
 /**
@@ -26,5 +27,7 @@ public class testaLixo {
         System.out.println(lista);
 
         System.out.println(lista.linearSearch("13"));
+
+        System.out.println(Compressor.reverseLine(lista.toString()));
     }
 }

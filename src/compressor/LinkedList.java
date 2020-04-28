@@ -97,6 +97,13 @@ public class LinkedList {
         temp.setNext(node);
     }
 
+    public void removeFromStart() {
+        if (isEmpty()) {
+            return;
+        }
+        first = first.getNext();
+    }
+
     public void removeFrom(int position) {
         int i = 0;
         Node temp = first;
@@ -107,6 +114,7 @@ public class LinkedList {
 
         if (position == 0) {
             first = first.getNext();
+            return;
         }
 
         while (i < position - 1) {

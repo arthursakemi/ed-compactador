@@ -42,6 +42,7 @@ public class Node {
     @Override
     public String toString() {
         return "Node{element = " + element + ", prox= " + next + "}";
+
     }
 
 }
